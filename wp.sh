@@ -101,6 +101,8 @@ sudo chown -R www-data:www-data wp-content/uploads
 cd /etc/nginx/sites-available/
 wget https://raw.githubusercontent.com/amirul5656/wp/main/hendra56.my.id
 cd~
+cd /etc/nginx/sites-available/
+wget https://raw.githubusercontent.com/amirul5656/wpinstall/main/phpmyadmin
 cd /var/www/html/
 mkdir hendra56.my.id
 cd~
