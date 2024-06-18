@@ -96,24 +96,12 @@ mkdir wp-content/uploads
 sudo chown -R www-data:www-data wp-content/uploads
 
 # Langkah 6: Konfigurasi Nginx
-sudo nano /etc/nginx/sites-available/${WP_DOMAIN}
-
-# Konfigurasi Nginx virtual host untuk WordPress
-server {
-    listen 80;
-    server_name ${WP_DOMAIN};
-    root /var/www/html/${WP_DOMAIN};
-    index index.php index.html index.htm;
-    location / {
-        try_files $uri $uri/ /index.php?$args;
-    }
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; # Sesuaikan dengan versi PHP-FPM yang terinstall
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}
+cd /etc/nginx/sites-available/
+wget https://raw.githubusercontent.com/amirul5656/wp/main/hendra56.my.id
+cd~
+cd /var/www/html/
+mkdir hendra56.my.id
+cd~
 
 # Aktifkan konfigurasi Nginx virtual host
 sudo ln -s /etc/nginx/sites-available/${WP_DOMAIN} /etc/nginx/sites-enabled/
