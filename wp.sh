@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Konfigurasi database
-DB_NAME="wordpress"
-DB_USER="wpuser"
-DB_PASS="password"
+DB_NAME="hendra"
+DB_USER="wpamirulr"
+DB_PASS="wppaswword"
 
 # Konfigurasi situs WordPress
 WP_DOMAIN="hendra56.my.id"
-WP_TITLE="My WordPress Site"
-WP_ADMIN_USER="admin"
+WP_TITLE="web untuk para wibu"
+WP_ADMIN_USER="amirul"
 WP_ADMIN_PASS="Amirul10021996"
-WP_ADMIN_EMAIL="admin@hendra56.my.id"
+WP_ADMIN_EMAIL="hendra@gmail.com"
 
 # Langkah 1: Instalasi Nginx, MySQL, PHP-FPM
 # Update and upgrade Ubuntu
