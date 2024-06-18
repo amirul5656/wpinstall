@@ -4,17 +4,19 @@
 DB_NAME="hendra"
 DB_USER="wpamirulr"
 DB_PASS="wppaswword"
-
-# Konfigurasi situs WordPress
 WP_DOMAIN="hendra56.my.id"
-WP_TITLE="web untuk para wibu"
-WP_ADMIN_USER="amirul"
-WP_ADMIN_PASS="Amirul10021996"
-WP_ADMIN_EMAIL="hendra@gmail.com"
+
+# Konfigurasi PHPMyAdmin
+PHPMYADMIN_DOMAIN="phpmyadmin.hendra56.my.id"
 
 # Langkah 1: Instalasi Nginx, MySQL, PHP-FPM
 # Update and upgrade Ubuntu
 apt-get update; apt-get upgrade -y; apt-get install -y fail2ban ufw;
+# Langkah 2: Instalasi PHPMyAdmin
+apt install -y phpmyadmin
+# Konfigurasi PHPMyAdmin
+echo "Include /etc/nginx/phpmyadmin.conf;" | tee -a /etc/nginx/sites-available/${PHPMYADMIN_DOMAIN}
+ln -s /usr/share/phpmyadmin /var/www/html/${PHPMYADMIN_DOMAIN}
 
 # Install NGINX
 sudo apt install nginx -y
@@ -105,6 +107,8 @@ cd~
 
 # Aktifkan konfigurasi Nginx virtual host
 sudo ln -s /etc/nginx/sites-available/${WP_DOMAIN} /etc/nginx/sites-enabled/
+# Aktifkan konfigurasi Nginx virtual host untuk PHPMyAdmin
+sudo ln -s /etc/nginx/sites-available/${PHPMYADMIN_DOMAIN} /etc/nginx/sites-enabled/
 
 # Uji konfigurasi Nginx
 sudo nginx -t
@@ -113,13 +117,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 
 # Langkah 7: Setup WordPress melalui WP-CLI (opsional)
-# Install WP-CLI (jika belum terinstall)
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
 
-# Konfigurasi situs WordPress
-wp core install --url=http://${WP_DOMAIN} --title="${WP_TITLE}" --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASS} --admin_email=${WP_ADMIN_EMAIL}
 
 # Selesai
 echo "Instalasi WordPress dengan Nginx selesai. Anda bisa mengakses situs Anda di http://${WP_DOMAIN}"
